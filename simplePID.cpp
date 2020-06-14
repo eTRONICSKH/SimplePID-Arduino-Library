@@ -10,7 +10,7 @@ void simplePID::SetSampleTime(unsigned long new_sample_time){
   _sample_time_ms = new_sample_time;
 }
 
-void simplePID::SetTunings(unsigned double kp, unsigned double ki, unsigned double kd){
+void simplePID::SetTunings(double kp, double ki, double kd){
   _kp = kp;
   _ki = ki;
   _kd = kd;

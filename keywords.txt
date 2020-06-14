@@ -13,4 +13,21 @@ ramp		KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-cmd	KEYWORD2
+SetSampleTime		KEYWORD2
+SetTunings			KEYWORD2
+SetOutputRange 		KEYWORD2
+SetMotorParameters	KEYWORD2
+MotorComputeLoop	KEYWORD2
+MotorSpeed			KEYWORD2
+MotorRevolution		KEYWORD2
+InputComputeLoop	KEYWORD2
+cmd					KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+MOTOR_RPS			LITERAL1
+MOTOR_RPM			LITERAL1
+PID_INPUT_CONTROL	LITERAL1
+PID_MOTOR_CONTROL	LITERAL1

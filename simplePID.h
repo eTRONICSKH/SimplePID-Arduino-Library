@@ -12,7 +12,7 @@ class simplePID{
 
     simplePID(bool pid_mode);
     void SetSampleTime(unsigned long sample_time);
-    void SetTunings(unsigned double kp, unsigned double ki, unsigned double kd);
+    void SetTunings(double kp, double ki, double kd);
     void SetOutputRange(double output_min, double output_max);
     void SetMotorParameters(double gear_ratio, double pule_per_revolution, double revolution_unit);
 
@@ -27,16 +27,16 @@ class simplePID{
   private:
     bool _pid_mode;
 
-    unsigned double _kp = 0.0;
-    unsigned double _ki = 0.0;
-    unsigned double _kd = 0.0;
+    double _kp = 0.0;
+    double _ki = 0.0;
+    double _kd = 0.0;
 
     unsigned long _sample_time_ms = 10;
 
     //motor-encoder-parameters
-    unsigned double _motor_gear= 1.0;
-    unsigned double _motor_ppr = 1.0;
-    unsigned double _motor_revolution_unit = MOTOR_RPS; //round per second
+    double _motor_gear= 1.0;
+    double _motor_ppr = 1.0;
+    double _motor_revolution_unit = MOTOR_RPS; //round per second
 
     long _motor_encoder;
     long _motor_last_encoder;
@@ -45,6 +45,7 @@ class simplePID{
     double _motor_speed = 0.0;
 
     //pid-computing-parameters
+    double _calc_input;
     double _error;
     double _last_error;
     double _intergral;
