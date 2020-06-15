@@ -44,32 +44,33 @@ double simplePID::MotorComputeLoop(double setpoint, long encoder_input){
   return(simplePID::cmd(setpoint, _calc_input, _elapsed_time));
 }
 
-double simplePID::MotorSpeed(){
-  return _motor_speed;
-}
-
-double simplePID::MotorRevolution(){
-  return _motor_revolution;
-}
-
 double simplePID::InputComputeLoop(double setpoint, double raw_input){
   if (_pid_mode != PID_INPUT_CONTROL) return;
   _elapsed_time = (unsigned long)millis()-_last_timer;
   if (_elapsed_time >= _sample_time_ms) {
     _calc_input = raw_input;
+    _last_timer = (unsigned long)millis();
   }
 
   return(simplePID::cmd(setpoint, _calc_input, _elapsed_time));
 }
-
 
 double simplePID::cmd(double setpoint, double calc_input, long elapsed_time){
   _error = setpoint - calc_input;
   _intergral += _error * (double)elapsed_time;
   _derivative = (_error - _last_error)/(double)elapsed_time;
   _cmd = _kp*_error + _ki*_intergral + _kd*_derivative;
+  _last_input = calc_input;
   _last_error = _error;
   return round(constrain(_cmd, _output_min, _output_max));
+}
+
+double simplePID::MotorSpeed(){
+  return _motor_speed;
+}
+
+double simplePID::MotorRevolution(){
+  return _motor_revolution;
 }
 
 
