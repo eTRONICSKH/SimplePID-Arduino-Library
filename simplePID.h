@@ -47,6 +47,7 @@ class simplePID{
     //pid-computing-parameters
     double _calc_input;
     double _error;
+    double _last_input;
     double _last_error;
     double _intergral;
     double _derivative;
